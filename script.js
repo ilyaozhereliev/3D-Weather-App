@@ -80,7 +80,7 @@ window.addEventListener('load', () => {
 
   function getResults(city) {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=6bae6c7343b8015e3160f2431d724cbc`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=6bae6c7343b8015e3160f2431d724cbc`,
     )
       .then(function (resp) {
         // convert data to json
