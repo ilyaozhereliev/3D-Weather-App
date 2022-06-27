@@ -2,4 +2,4 @@
 
 You can try it here:
 
-<a href=https://weather-lk4ruw694-ilyaozhereliev.vercel.app target="_blank"/>Ссылка</a>
+<a href="https://weather-lk4ruw694-ilyaozhereliev.vercel.app" target="_blank"/>Ссылка</a>
