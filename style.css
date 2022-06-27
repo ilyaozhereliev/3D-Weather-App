@@ -1,115 +1,115 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(rgb(235, 235, 235), rgb(190, 190, 190));
-    color: rgb(32, 32, 32);
-    perspective: 1000px;
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(rgb(235, 235, 235), rgb(190, 190, 190));
+  color: rgb(32, 32, 32);
+  perspective: 1000px;
 }
 
 body.dark {
-    background: linear-gradient(rgb(65, 65, 65), rgb(32, 32, 32));
-    color: rgb(235, 235, 235);
+  background: linear-gradient(rgb(65, 65, 65), rgb(32, 32, 32));
+  color: rgb(235, 235, 235);
 }
 
 body.dark input {
-    color: rgb(235, 235, 235);
+  color: rgb(235, 235, 235);
 }
 
-input[type="checkbox"]{
-    -webkit-appearance: none;
-    visibility: hidden;
-    display: none;
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  visibility: hidden;
+  display: none;
 }
 
-input[type="checkbox"]:checked ~ .label {
-    background:rgb(32, 32, 32);
+input[type='checkbox']:checked ~ .label {
+  background: rgb(32, 32, 32);
 }
 
 .checkbox {
-    opacity: 0;
-    position: absolute;
+  opacity: 0;
+  position: absolute;
 }
 
 .label {
-    background-color: rgb(190, 190, 190);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    border-radius: 50px;
-    padding: 5px;
-    height: 26px;
-    width: 50px;
-    cursor: pointer;
-    transform: scale(0.8);
+  background-color: rgb(190, 190, 190);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  border-radius: 50px;
+  padding: 5px;
+  height: 26px;
+  width: 50px;
+  cursor: pointer;
+  transform: scale(0.8);
 }
 
 .ball {
-    background-color: rgb(235, 235, 235);
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 22px;
-    width: 22px;
-    border-radius: 50px;
-    transition: transform 0.2s linear;
+  background-color: rgb(235, 235, 235);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  border-radius: 50px;
+  transition: transform 0.2s linear;
 }
 
-.checkbox:checked + .label  .ball {
-    transform: translateX(24px);
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
 }
 
 .search-box {
-    top: 20px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: body;
-    height: 40px;
-    border-radius: 40px;
-    padding: 6px;
-    transition: all 0.75s ease-out;
+  top: 20px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: body;
+  height: 40px;
+  border-radius: 40px;
+  padding: 6px;
+  transition: all 0.75s ease-out;
 }
 
 ::placeholder {
-    color:rgba(110, 110, 110, 0.596);
+  color: rgba(110, 110, 110, 0.596);
 }
 
 .search-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:rgb(110, 110, 110);
-    width: 60px;
-    height: 40px;
-    border-radius: 50px;
-    background-color: body;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(110, 110, 110);
+  width: 60px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: body;
+  text-decoration: none;
 }
 
 .search-txt {
-    border: none;
-    outline: none;
-    background: none;
-    padding: 0;
-    color: rgb(32, 32, 32);
-    font-size: 16px;
-    transition: .4s;
-    line-height: 40px;
-    width: 240px;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  color: rgb(32, 32, 32);
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 240px;
 }
 /* 
 .search-box:hover {
@@ -117,129 +117,86 @@ input[type="checkbox"]:checked ~ .label {
 } */
 
 .search-box:hover .search-txt {
-    width: 260px;
-    padding: 0, 6px;
+  width: 260px;
+  padding: 0, 6px;
 }
 
 .container {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
-    transition: height .5s ease;
-    transform-style: preserve-3d;
-    height: 60vh;
-    width: 20rem;
-    border-radius: 30px;
-    padding: 0rem 5rem;
-    overflow: hidden;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+  transition: height 0.5s ease;
+  transform-style: preserve-3d;
+  height: 60vh;
+  width: 20rem;
+  border-radius: 30px;
+  padding: 0rem 5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
 }
 
 .card:hover {
-    height: 80vh;
+  height: 80vh;
 }
 
 .card-wrapper {
-    transition: all .1s ease;
+  transition: all 0.1s ease;
 }
 
 .city {
-    font-size: 3vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    transition: all 0.75s ease-out;
+  font-size: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  transition: all 0.75s ease-out;
 }
 
 .icon {
-    margin-top: 30px;
-    justify-content: center;
-    z-index: 2;
-    transition: all 0.75s ease-out;
-    }
+  margin-top: 30px;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.75s ease-out;
+}
 
 .temperature {
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: all 0.75s ease-out;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.75s ease-out;
 }
 
 .degree-section {
-    display: flex;
-    align-items: center;
-    margin-top: 150px;
+  display: flex;
+  align-items: center;
+  margin-top: 150px;
 }
 
 .weather-description {
-    line-height: 1.4em;
-    margin-top: 450px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    transition: all 0.75s ease-out;
+  line-height: 1.4em;
+  margin-top: 450px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  transition: all 0.75s ease-out;
 }
 
 .degree-section span {
-    font-size: 5vh;
+  font-size: 5vh;
 }
 
 .degree-section h2 {
-    font-size: 10vh;
+  font-size: 10vh;
 }
 
 .temperature-description {
-    font-size: 3vh;
+  font-size: 3vh;
 }
-
-/* Eyes move ................................................................................................................... */
-
-/* .face {
-    bottom: 20px;
-    right: 50px;
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background:rgb(150, 150, 150);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.eyes {
-    position: relative;
-    top: 0;
-    display: flex;
-}
-
-.eyes .eye {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    display: block;
-    background: #ffff;
-    margin: 0 3px;
-    border-radius: 50%;
-}
-
-.eyes .eye::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 7px;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background:rgb(29, 29, 29);
-    border-radius: 50%;
-} */

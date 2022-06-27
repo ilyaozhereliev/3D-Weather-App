@@ -1,141 +1,107 @@
 window.addEventListener('load', () => {
-	// Eyes move
-	// document.querySelector('.body').addEventListener('mousemove', eyeball);
+  // Day/night switch
+  const checkbox = document.getElementById('checkbox');
 
-	// function eyeball() {
+  checkbox.addEventListener('change', () => {
+    // change the theme
+    document.body.classList.toggle('dark');
+  });
 
-	//   const eye = document.querySelectorAll('.eye');
+  // Movement animation to happened
+  const card = document.querySelector('.card');
+  const container = document.querySelector('.container');
 
-	//   eye.forEach(function(eye) {
-	//     let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
-	//     let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
-	//     let radian = Math.atan2(event.pageX - x, event.pageY - y);
-	//     let rot = (radian * (180 / Math.PI) * -1) + 270;
-	//     eye.style.transform = "rotate("+ rot +"deg)";
-	//   });
-	// }
+  // Items
+  const city = document.querySelector('.city');
+  const icon = document.querySelector('.icon');
+  const temperature = document.querySelector('.temperature');
 
-	// Day/night switch
-	const checkbox = document.getElementById('checkbox');
+  // Moving animation effect
+  container.addEventListener('mousemove', (e) => {
+    let xAxis = (window.innerWidth / 2 - e.pageX) / 100;
+    let yAxis = (window.innerWidth / 2 - e.pageY) / 100;
+    container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+  });
 
-	checkbox.addEventListener('change', () => {
-		// change the theme
-		document.body.classList.toggle('dark');
-	});
+  // Animate In
+  container.addEventListener('mouseenter', (e) => {
+    container.style.transition = 'none';
+    // Popout
+    city.style.transform = 'translateZ(150px)';
+    icon.style.transform = 'translateZ(200px) rotateZ(-360deg)';
+    temperature.style.transform = 'translateZ(125px)';
+  });
 
-	// Movement animation to happened
-	const card = document.querySelector('.card');
-	const container = document.querySelector('.container');
+  // Animate Out
+  container.addEventListener('mouseleave', (e) => {
+    container.style.transition = 'all 0.5s ease';
+    container.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    // Popback
+    city.style.transform = 'translateZ(0px)';
+    icon.style.transform = 'translateZ(0px) rotateZ(0deg)';
+    temperature.style.transform = 'translateZ(0px)';
+  });
 
-	// Items
-	const city = document.querySelector('.city');
-	const icon = document.querySelector('.icon');
-	const temperature = document.querySelector('.temperature');
+  function capitalize(str) {
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+      if (i === 0) {
+        result += str[i].toUpperCase();
+      } else {
+        result += str[i];
+      }
+    }
+    return result;
+  }
 
-	// Moving animation effect
-	container.addEventListener('mousemove', (e) => {
-		let xAxis = (window.innerWidth / 2 - e.pageX) / 100;
-		let yAxis = (window.innerWidth / 2 - e.pageY) / 100;
-		container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-	});
+  function toCamelCase(str) {
+    const arr = str.split(' ');
+    const newArray = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (i === 0) {
+        newArray.push(arr[i]);
+      } else {
+        newArray.push(capitalize(arr[i]));
+      }
+    }
+    return newArray.join('');
+  }
 
-	// Animate In
-	container.addEventListener('mouseenter', (e) => {
-		container.style.transition = 'none';
-		// Popout
-		city.style.transform = 'translateZ(150px)';
-		icon.style.transform = 'translateZ(200px) rotateZ(-360deg)';
-		temperature.style.transform = 'translateZ(125px)';
-	});
+  const searchTxt = document.querySelector('.search-txt');
+  const btn = document.querySelector('.search-btn');
+  searchTxt.addEventListener('keypress', setQuery);
 
-	// Animate Out
-	container.addEventListener('mouseleave', (e) => {
-		container.style.transition = 'all 0.5s ease';
-		container.style.transform = `rotateY(0deg) rotateX(0deg)`;
-		// Popback
-		city.style.transform = 'translateZ(0px)';
-		icon.style.transform = 'translateZ(0px) rotateZ(0deg)';
-		temperature.style.transform = 'translateZ(0px)';
-	});
+  function setQuery(e) {
+    if (event.keyCode == 13 || event.keycode == btn) {
+      getResults(searchTxt.value);
+      console.log(getResults);
+    }
+  }
 
-	function capitalize(str) {
-		let result = '';
-		for (let i = 0; i < str.length; i++) {
-			if (i === 0) {
-				result += str[i].toUpperCase();
-			} else {
-				result += str[i];
-			}
-		}
-		return result;
-	}
-
-	function toCamelCase(str) {
-		const arr = str.split(' ');
-		const newArray = [];
-		for (let i = 0; i < arr.length; i++) {
-			if (i === 0) {
-				newArray.push(arr[i]);
-			} else {
-				newArray.push(capitalize(arr[i]));
-			}
-		}
-		return newArray.join('');
-	}
-
-	let api = `http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=6bae6c7343b8015e3160f2431d724cbc`;
-
-	const searchTxt = document.querySelector('.search-txt');
-	const btn = document.querySelector('.search-btn');
-	searchTxt.addEventListener('keypress', setQuery);
-
-	function setQuery(e) {
-		if (event.keyCode == 13 || event.keycode == btn) {
-			getResults(searchTxt.value);
-			console.log(getResults);
-		}
-	}
-
-	function getResults(city) {
-		fetch(
-			`http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=6bae6c7343b8015e3160f2431d724cbc`
-		)
-			.then(function (resp) {
-				// convert data to json
-				return resp.json();
-			})
-			.then(function (data) {
-				// if (data.cod === '404') {
-				//   document.querySelector('.card').innerHTML = 'There is no such city';
-				// } else {
-
-				console.log(data);
-				document.querySelector('.city').innerHTML = data.name;
-				document.querySelector('.temperature-degree').innerHTML =
-					Math.floor(data.main.temp - 273) + '&deg';
-				document.querySelector('.temperature-description').innerHTML =
-					data.weather[0].description;
-				document.querySelector(
-					'.feels-like'
-				).innerHTML = `Feels like: ${Math.floor(
-					data.main.feels_like - 273
-				)}`;
-				document.querySelector(
-					'.humidity'
-				).innerHTML = `Humidity: ${data.main.humidity}%`;
-				document.querySelector(
-					'.pressure'
-				).innerHTML = `Pressure: ${Math.floor(
-					data.main.pressure / 1.33
-				)}mb`;
-				document.querySelector(
-					'.wind-speed'
-				).innerHTML = `Wind speed: ${data.wind.speed}m/s`;
-				document.querySelector(
-					'.icon'
-				).innerHTML = `<img width='150' src ="icons/${toCamelCase(
-					data.weather[0].description
-				)}.png">`;
-			});
-	}
+  function getResults(city) {
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=6bae6c7343b8015e3160f2431d724cbc`,
+    )
+      .then(function (resp) {
+        // convert data to json
+        return resp.json();
+      })
+      .then(function (data) {
+        document.querySelector('.city').innerHTML = data.name;
+        document.querySelector('.temperature-degree').innerHTML =
+          Math.floor(data.main.temp - 273) + '&deg';
+        document.querySelector('.temperature-description').innerHTML = data.weather[0].description;
+        document.querySelector('.feels-like').innerHTML = `Feels like: ${Math.floor(
+          data.main.feels_like - 273,
+        )}`;
+        document.querySelector('.humidity').innerHTML = `Humidity: ${data.main.humidity}%`;
+        document.querySelector('.pressure').innerHTML = `Pressure: ${Math.floor(
+          data.main.pressure / 1.33,
+        )}mb`;
+        document.querySelector('.wind-speed').innerHTML = `Wind speed: ${data.wind.speed}m/s`;
+        document.querySelector('.icon').innerHTML = `<img width='150' src ="icons/${toCamelCase(
+          data.weather[0].description,
+        )}.png">`;
+      });
+  }
 });
