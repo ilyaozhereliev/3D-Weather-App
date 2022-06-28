@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
     <title>Weather</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Day/night switch -->
     <div>
-        <input type="checkbox" class="checkbox" id="checkbox">
-        <label for="checkbox" class="label">
-            <div class="ball"></div>
-        </label>
+      <input type="checkbox" class="checkbox" id="checkbox" />
+      <label for="checkbox" class="label">
+        <div class="ball"></div>
+      </label>
     </div>
 
     <!-- Search button -->
     <div class="search-box">
-        <input type="text" class="search-txt" placeholder="Enter your city">
-        <a href="#" class="search-btn"><i class="fa fa-search"></i></a>
+      <input type="text" class="search-txt" placeholder="Enter your city" />
+      <a href="#" class="search-btn"><i class="fa fa-search"></i></a>
     </div>
 
     <!-- Container -->
     <div class="container">
-        <div class="card">
-            <div class="card-wrapper">
-                <h1 class="city"></h1>
-                <div class="icon"></div>
-                <div class="temperature">
-                    <div class="degree-section">
-                        <h2 class="temperature-degree"></h2>
-                    </div>
-                    <div class="temperature-description"></div>
-                    <div class="weather-description">
-                        <p class="feels-like"></p>
-                        <p class="humidity"></p>
-                        <p class="pressure"></p>
-                        <p class="wind-speed"></p>
-                    </div>
-                </div>
+      <div class="card">
+        <div class="card-wrapper">
+          <h1 class="city"></h1>
+          <div class="icon"></div>
+          <div class="temperature">
+            <div class="degree-section">
+              <h2 class="temperature-degree"></h2>
             </div>
+            <div class="temperature-description"></div>
+            <div class="weather-description">
+              <p class="feels-like"></p>
+              <p class="humidity"></p>
+              <p class="pressure"></p>
+              <p class="wind-speed"></p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- Eyes move -->
-    <!-- <div class="face">
-        <div class="eyes">
-            <div class="eye"></div>
-            <div class="eye"></div>
-        </div>
-    </div> -->
-
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

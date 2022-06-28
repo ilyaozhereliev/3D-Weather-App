@@ -8,13 +8,15 @@ window.addEventListener('load', () => {
   });
 
   // Movement animation to happened
-  const card = document.querySelector('.card');
   const container = document.querySelector('.container');
 
   // Items
   const city = document.querySelector('.city');
   const icon = document.querySelector('.icon');
   const temperature = document.querySelector('.temperature');
+  const searchTxt = document.querySelector('.search-txt');
+  const btn = document.querySelector('.search-btn');
+  searchTxt.addEventListener('keypress', setQuery);
 
   // Moving animation effect
   container.addEventListener('mousemove', (e) => {
@@ -66,10 +68,6 @@ window.addEventListener('load', () => {
     }
     return newArray.join('');
   }
-
-  const searchTxt = document.querySelector('.search-txt');
-  const btn = document.querySelector('.search-btn');
-  searchTxt.addEventListener('keypress', setQuery);
 
   function setQuery(e) {
     if (event.keyCode == 13 || event.keycode == btn) {
