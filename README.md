@@ -4,7 +4,7 @@
 
 ***
 
-## 🌐 You can try it here <a href="https://weather-lk4ruw694-ilyaozhereliev.vercel.app" target="_blank"/>here</a>
+## 🌐 You can try it <a href="https://weather-lk4ruw694-ilyaozhereliev.vercel.app" target="_blank"/>here</a>
 
 ***
 
